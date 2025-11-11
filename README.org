@@ -1,0 +1,26 @@
+* Nix based configurations
+
+** Darwin
+
+#+begin_src sh
+  # 1. Install nix on macOS
+  sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install)
+
+  # 2. Install darwin-rebuild command
+  sudo nix run nix-darwin/master#darwin-rebuild --extra-experimental-features "nix-command flakes" -- switch --flake ~/nixdot#m4pro
+
+  # 3. Rebuild
+  sudo darwin-rebuild switch --flake ~/nixdot#m4pro
+#+end_src
+
+** Home-Manager
+
+#+begin_src sh
+  # 1. Install home-manager
+  nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+  nix-channel --update
+  nix-shell '<home-manager>' -A install
+
+  # 2. Build
+  home-manager switch --flake ~/nixdot#m4pro@cya
+#+end_src
