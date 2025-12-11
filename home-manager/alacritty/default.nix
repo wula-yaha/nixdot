@@ -1,0 +1,63 @@
+{ pkgs, ... }:
+{
+  programs = {
+    alacritty = {
+      enable = true;
+      settings = {
+        general = {
+          live_config_reload = true;
+        };
+        window = {
+          padding = {
+            x = 12;
+            y = 12;
+          };
+          opacity = 0.95;
+          startup_mode = "Maximized";
+          option_as_alt = "OnlyLeft";
+        };
+        font = {
+          normal = {
+            family = "JetBrainsMono Nerd Font";
+            style = "Regular";
+          };
+          bold = {
+            family = "JetBrainsMono Nerd Font";
+            style = "Bold";
+          };
+          size = 13.0;
+          offset = {
+            x = 1;
+            y = 4;
+          };
+        };
+        bell = {
+          animation = "EaseOutQuad";
+          duration = 1500;
+        };
+        cursor = {
+          style = {
+            shape = "Block";
+            blinking = "Always";
+          };
+          blink_interval = 1000;
+          blink_timeout = 0;
+        };
+        keyboard = {
+          bindings = [
+            {
+              key = "c";
+              mods = "Control|Shift";
+              action = "Copy";
+            }
+            {
+              key = "v";
+              mods = "Control|Shift";
+              action = "Paste";
+            }
+          ];
+        };
+      };
+    };
+  };
+}
